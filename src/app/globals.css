@@ -2,26 +2,134 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+@font-face {
+  font-family: Graphik;
+  src: url('fonts/ghgh/Graphik-Regular-Trial.otf');
+  font-weight: 400;
 }
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+@font-face {
+  font-family: Graphik;
+  src: url('fonts/ghgh/Graphik-Medium-Trial.otf');
+  font-weight: 500;
+}
+@font-face {
+  font-family: Graphik;
+  src: url('fonts/ghgh/Graphik-Semibold-Trial.otf');
+  font-weight: 600;
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  margin: 0;
+  font-family: Graphik;
+}
+
+input[type='radio'] {
+  -webkit-appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  outline: none;
+  box-shadow: 0 0 0 1px #e5e5e5;
+}
+
+input[type='radio']:checked {
+  box-shadow: 0 0 0 1px #272727;
+}
+
+input[type='radio']:before {
+  content: '';
+  display: block;
+  width: 70%;
+  height: 70%;
+  margin: 15% auto;
+  border-radius: 50%;
+  transition-duration: 0.4s;
+}
+
+input[type='radio']:checked:before {
+  background: #272727;
+}
+
+
+.gray-50 {
+  color: #f9fafb;
+}
+.gray-100 {
+  color: #f3f4f6;
+}
+.gray-200 {
+  color: #e5e7eb;
+}
+.gray-300 {
+  color: #d2d6db;
+}
+.gray-400 {
+  color: #9da4ae;
+}
+.gray-500 {
+  color: #6c737f;
+}
+.gray-600 {
+  color: #4d5761;
+}
+.gray-700 {
+  color: #384250;
+}
+.gray-800 {
+  color: #1f2a37;
+}
+.gray-900 {
+  color: #111927;
+}
+
+.bg-50 {
+  background-color: #f9fafb;
+}
+.bg-100 {
+  background-color: #f3f4f6;
+}
+.bg-200 {
+  background-color: #e5e7eb;
+}
+.bg-300 {
+  background-color: #d2d6db;
+}
+.bg-400 {
+  background-color: #9da4ae;
+}
+.bg-500 {
+  background-color: #6c737f;
+}
+.bg-600 {
+  background-color: #4d5761;
+}
+.bg-700 {
+  background-color: #384250;
+}
+.bg-800 {
+  background-color: #1f2a37;
+}
+.bg-900 {
+  background-color: #111927;
+}
+
+
+/* width */
+body::-webkit-scrollbar {
+  width: 0px;
+}
+
+/* Track */
+body::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+body::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+body::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }

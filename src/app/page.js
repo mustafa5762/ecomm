@@ -1,10 +1,19 @@
-import Link from "next/link";
+"use client"
 
+import React, { useRef } from 'react'
 
-export default function Home() {
+const Page = () => {
+
+    const Hello = useRef()
+
+    const get = () => {
+        Hello.current.play();
+    }
   return (
-    <main className="">
-      <Link href={'/collection/shoes'}>sdsd</Link>
-    </main>
+    <div>
+        
+    </div>
   )
 }
+
+export default Page

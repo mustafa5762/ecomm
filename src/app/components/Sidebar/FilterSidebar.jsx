@@ -65,7 +65,7 @@ function FilterSidebar() {
 
                 <div className="mt-6 mb-6 px-8">
                   <div className="flex items-center justify-between">
-                    <div className="gray-900 font-medium text-sm tracking-wide">Sort By</div>
+                    <div className="gray-900 font-semibold text-sm">Sort By</div>
                     <div className="gray-800">
                       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-5 h-5">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
@@ -84,7 +84,7 @@ function FilterSidebar() {
                         />
                         <label
                           htmlFor="red-radio"
-                          className="ml-4 text-[13px] gray-700 tracking-wide"
+                          className="ml-4 text-[13px] gray-700 font-medium"
                         >
                           {sort}
                         </label>
@@ -98,7 +98,7 @@ function FilterSidebar() {
                 
                 <div className="my-6 px-8">
                   <div className="flex items-center justify-between">
-                    <div className="gray-900 font-medium text-sm tracking-wide">Colors</div>
+                    <div className="gray-900 font-semibold text-sm">Colors</div>
                     <div className="gray-800">
                       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-5 h-5">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
@@ -112,7 +112,7 @@ function FilterSidebar() {
                         <div className="flex justify-center">
                           <div className={`w-[18px] h-[18px] rounded-full ${color.class}`}></div>
                         </div>
-                        <div className="mt-2.5 gray-700 text-[13px] tracking-wide">{color.name}</div>
+                        <div className="mt-2.5 gray-700 text-[13px] font-medium">{color.name}</div>
                       </div>
                     )}
                   </div>

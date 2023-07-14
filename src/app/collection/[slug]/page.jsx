@@ -80,20 +80,20 @@ export default function Example() {
               leaveFrom="opacity-100"
               leaveTo="opacity-0"
             >
-              <div className="fixed inset-0 bg-black bg-opacity-25" />
+              <div className="fixed inset-0 bg-black bg-opacity-40" />
             </Transition.Child>
 
-            <div className="fixed inset-0 z-40 flex m-3 rounded-xl">
+            <div className="fixed inset-0 z-40 flex m-3">
               <Transition.Child
                 as={Fragment}
-                enter="transition ease-in-out duration-300 transform"
+                enter="transition ease-[cubic-bezier(.19,1,.22,1)] duration-500 transform"
                 enterFrom="translate-x-full"
                 enterTo="translate-x-0"
-                leave="transition ease-in-out duration-300 transform"
+                leave="transition ease-[cubic-bezier(.19,1,.22,1)] duration-700 transform"
                 leaveFrom="translate-x-0"
                 leaveTo="translate-x-full"
               >
-                <Dialog.Panel className="relative ml-auto flex h-full w-full max-w-sm flex-col overflow-y-auto bg-white py-4 pb-12 shadow-xl">
+                <Dialog.Panel className="relative ml-auto flex h-full w-full max-w-sm flex-col overflow-y-auto bg-white py-4 pb-12 shadow-xl rounded-md">
                   <div className="flex items-center justify-between px-8">
                     <h2 className="text-lg font-semibold text-gray-900">Filters</h2>
                     <button
@@ -107,6 +107,15 @@ export default function Example() {
                   </div>
 
                   {/* Filters */}
+                  <Transition.Child
+                as={Fragment}
+                enter="transition ease-[cubic-bezier(.19,1,.22,1)] duration-700 transform"
+                enterFrom="-translate-x-full opacity-0"
+                enterTo="translate-x-0 opacity-1"
+                leave="transition ease-[cubic-bezier(.19,1,.22,1)] duration-300 transform"
+                leaveFrom="translate-x-0 opacity-1"
+                leaveTo="-translate-x-full opacity-0"
+              >
                   <form className="mt-4 border-t border-gray-200">
                     <h3 className="sr-only">Categories</h3>
                     <ul role="list" className="px-6 py-3 font-medium text-gray-900">
@@ -162,6 +171,7 @@ export default function Example() {
                       </Disclosure>
                     ))}
                   </form>
+                  </Transition.Child>
                 </Dialog.Panel>
               </Transition.Child>
             </div>

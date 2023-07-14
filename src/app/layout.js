@@ -1,4 +1,5 @@
 import './globals.css'
+import "cal-sans";
 
 
 export const metadata = {

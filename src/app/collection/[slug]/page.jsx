@@ -110,7 +110,7 @@ export default function Example() {
                   <Transition.Child
                 as={Fragment}
                 enter="transition ease-[cubic-bezier(.19,1,.22,1)] duration-700 transform"
-                enterFrom="-translate-x-full opacity-0"
+                enterFrom="-translate-x-3/4 opacity-0"
                 enterTo="translate-x-0 opacity-1"
                 leave="transition ease-[cubic-bezier(.19,1,.22,1)] duration-300 transform"
                 leaveFrom="translate-x-0 opacity-1"

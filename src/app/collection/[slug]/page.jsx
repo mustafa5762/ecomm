@@ -58,6 +58,33 @@ const filters = [
   },
 ]
 
+const products = [
+  {
+    name: 'Pursuit Haydon Tee',
+    price: 28800,
+    short: 'Tech Jersey T-Shirt',
+    image: 'https://cdn.media.amplience.net/i/rb/MBC23ST051ZY51-100-B/Pursuit-Haydon-Tee-100?$large$&fmt=auto'
+  },
+  {
+    name: 'Classic Cloud Tee',
+    price: 37900,
+    short: 'Cloud Jersey T-Shirt',
+    image: 'https://cdn.media.amplience.net/i/rb/MBC23PT017BB17-260-B/Classic-Cloud-Tee-260?$xlarge$&fmt=auto'
+  },
+  {
+    name: 'Kerwin Linen Short Sleeve Crew',
+    price: 59100,
+    short: 'Relaxed Fit Shirt',
+    image: 'https://cdn.media.amplience.net/i/rb/MBS23P007BLT07-319-B/Kerwin-Linen-Short-Sleeve-Crew-319?$xlarge$&fmt=auto'
+  },
+  {
+    name: 'Miles Principal Jersey Tee',
+    price: 37900,
+    short: 'Cotton T-Shirt',
+    image: 'https://cdn.media.amplience.net/i/rb/MBC21PT0236N23-021-B/Miles-Principal-Jersey-Tee-021?$xlarge$&fmt=auto'
+  },
+]
+
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
@@ -80,7 +107,7 @@ export default function Example() {
               leaveFrom="opacity-100"
               leaveTo="opacity-0"
             >
-              <div className="fixed inset-0 bg-black bg-opacity-40" />
+              <div className="fixed inset-0 bg-black bg-opacity-25" />
             </Transition.Child>
 
             <div className="fixed inset-0 z-40 flex m-3">
@@ -178,15 +205,16 @@ export default function Example() {
           </Dialog>
         </Transition.Root>
 
-        <main className="mx-auto px-4 sm:px-6 lg:px-16">
-          <div className="flex items-center justify-between border-b border-gray-200 pb-6 pt-24">
-            <h1 className="text-3xl font-bold text-gray-900">T-Shirts</h1>
+        <main className="mx-auto px-4 sm:px-6 lg:px-12">
+          <div className="flex items-center justify-between pt-24">
+            <div className='text-gray-900 text-sm'><span className="font-bold">63</span> products found</div>
 
             <div className="flex items-center">
               <Menu as="div" className="relative inline-block text-left">
                 <div>
-                  <Menu.Button className="group inline-flex justify-center text-sm font-medium text-gray-700 hover:text-gray-900">
-                    Sort
+                  <Menu.Button className="group inline-flex justify-center text-sm font-medium text-gray-800 hover:text-gray-900">
+                    Sort by
+                    <span className="font-bold ml-2">Most Popular</span>
                     <ChevronDownIcon
                       className="-mr-1 ml-1 h-5 w-5 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
                       aria-hidden="true"
@@ -203,7 +231,7 @@ export default function Example() {
                   leaveFrom="transform opacity-100 scale-100"
                   leaveTo="transform opacity-0 scale-95"
                 >
-                  <Menu.Items className="absolute right-0 z-10 mt-2 w-40 origin-top-right rounded-md bg-white shadow-2xl ring-1 ring-black ring-opacity-5 focus:outline-none">
+                  <Menu.Items className="absolute right-0 z-10 mt-2 w-44 origin-top-right rounded-md bg-white shadow-2xl ring-1 ring-black ring-opacity-5 focus:outline-none">
                     <div className="py-1">
                       {sortOptions.map((option) => (
                         <Menu.Item key={option.name}>
@@ -211,7 +239,7 @@ export default function Example() {
                             <a
                               href={option.href}
                               className={classNames(
-                                option.current ? 'font-medium text-gray-900' : 'text-gray-500',
+                                option.current ? 'font-medium text-gray-900' : 'text-gray-800',
                                 active ? 'bg-gray-100' : '',
                                 'block px-4 py-2 text-sm'
                               )}
@@ -226,17 +254,14 @@ export default function Example() {
                 </Transition>
               </Menu>
 
-              <button type="button" className="-m-2 ml-5 p-2 text-gray-400 hover:text-gray-500 sm:ml-7">
-                <span className="sr-only">View grid</span>
-                <Squares2X2Icon className="h-5 w-5" aria-hidden="true" />
-              </button>
+
               <button
                 type="button"
-                className="-m-2 ml-4 p-2 text-gray-400 hover:text-gray-500 sm:ml-6"
+                className="-m-2 ml-4 p-2 sm:ml-6 flex items-center"
                 onClick={() => setMobileFiltersOpen(true)}
               >
-                <span className="sr-only">Filters</span>
-                <FunnelIcon className="h-5 w-5" aria-hidden="true" />
+                <span className="font-bold mr-2 text-sm text-gray-900">Show Filters</span>
+                
               </button>
             </div>
           </div>
@@ -252,11 +277,8 @@ export default function Example() {
 
               {/* Product grid */}
               <div className="lg:col-span-5">
-                <div className="grid grid-cols-2 lg:grid-cols-3 gap-x-2 lg:gap-x-8 gap-y-10">
-                <ProductCard/>
-                <ProductCard/>
-                <ProductCard/>
-                <ProductCard/>
+                <div className="grid grid-cols-2 lg:grid-cols-3 gap-x-2 gap-y-16">
+                {products.map(product => <ProductCard product={product}/>)}
                 </div>
               </div>
             </div>

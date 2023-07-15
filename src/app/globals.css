@@ -4,14 +4,14 @@
 
 
 @font-face {
-  font-family: 'f';
+  font-family: 'Epilogue';
   src: url('fonts/Epilogue_Complete/Fonts/Variable/Epilogue-Variable.ttf');
 }
 
 
 body {
   margin: 0;
-  font-family: 'f';
+  font-family: 'Epilogue';
 }
 
 

@@ -63,24 +63,28 @@ const products = [
     name: 'Pursuit Haydon Tee',
     price: 28800,
     short: 'Tech Jersey T-Shirt',
+    image2: 'https://cdn.media.amplience.net/i/rb/MBC23ST051ZY51-338-A/Pursuit-Haydon-Tee-338?$xlarge$&fmt=auto',
     image: 'https://cdn.media.amplience.net/i/rb/MBC23ST051ZY51-100-B/Pursuit-Haydon-Tee-100?$large$&fmt=auto'
   },
   {
     name: 'Classic Cloud Tee',
     price: 37900,
     short: 'Cloud Jersey T-Shirt',
+    image2: 'https://cdn.media.amplience.net/i/rb/MBC23PT017BB17-260-A/Classic-Cloud-Tee-260?$xlarge$&fmt=auto',
     image: 'https://cdn.media.amplience.net/i/rb/MBC23PT017BB17-260-B/Classic-Cloud-Tee-260?$xlarge$&fmt=auto'
   },
   {
     name: 'Kerwin Linen Short Sleeve Crew',
     price: 59100,
     short: 'Relaxed Fit Shirt',
+    image2: 'https://cdn.media.amplience.net/i/rb/MBS23P007BLT07-319-A/Kerwin-Linen-Short-Sleeve-Crew-319?$xlarge$&fmt=auto',
     image: 'https://cdn.media.amplience.net/i/rb/MBS23P007BLT07-319-B/Kerwin-Linen-Short-Sleeve-Crew-319?$xlarge$&fmt=auto'
   },
   {
     name: 'Miles Principal Jersey Tee',
     price: 37900,
     short: 'Cotton T-Shirt',
+    image2: 'https://cdn.media.amplience.net/i/rb/MBC21PT0236N23-021-A/Miles-Principal-Jersey-Tee-021?$xlarge$&fmt=auto',
     image: 'https://cdn.media.amplience.net/i/rb/MBC21PT0236N23-021-B/Miles-Principal-Jersey-Tee-021?$xlarge$&fmt=auto'
   },
 ]
@@ -107,7 +111,7 @@ export default function Example() {
               leaveFrom="opacity-100"
               leaveTo="opacity-0"
             >
-              <div className="fixed inset-0 bg-black bg-opacity-25" />
+              <div className="fixed inset-0 bg-black bg-opacity-40" />
             </Transition.Child>
 
             <div className="fixed inset-0 z-40 flex m-3">
@@ -120,7 +124,7 @@ export default function Example() {
                 leaveFrom="translate-x-0"
                 leaveTo="translate-x-full"
               >
-                <Dialog.Panel className="relative ml-auto flex h-full w-full max-w-sm flex-col overflow-y-auto bg-white py-4 pb-12 shadow-xl rounded-md">
+                <Dialog.Panel className="relative ml-auto flex h-full w-full max-w-lg flex-col overflow-y-auto bg-white py-4 pb-12 shadow-xl rounded-md">
                   <div className="flex items-center justify-between px-8">
                     <h2 className="text-lg font-semibold text-gray-900">Filters</h2>
                     <button
@@ -205,9 +209,15 @@ export default function Example() {
           </Dialog>
         </Transition.Root>
 
-        <main className="mx-auto px-4 sm:px-6 lg:px-12">
-          <div className="flex items-center justify-between pt-24">
-            <div className='text-gray-900 text-sm'><span className="font-bold">63</span> products found</div>
+        <main className="mx-auto">
+          <div className="pt-24 px-4 sm:px-6 lg:px-12 pb-14">
+            <h1 className="text-3xl lg:text-4xl text-gray-900 font-bold">T-Shirts</h1>
+            <p className="text-gray-800 mt-3 text-xs lg:text-[15px] leading-normal">
+            The easiest thing to wear and the most essential layer is a damn good tee shirt. Long or <br /> short sleeve tees, henleys, crew or v-necks - the best men's tees for any style.
+            </p>
+          </div>
+          <div className="flex items-center justify-between px-4 pb-6 sm:px-6 lg:px-12">
+            <div className='text-gray-900 text-sm hidden lg:inline-block'><span className="font-bold">63</span> products found</div>
 
             <div className="flex items-center">
               <Menu as="div" className="relative inline-block text-left">
@@ -266,7 +276,7 @@ export default function Example() {
             </div>
           </div>
 
-          <section aria-labelledby="products-heading" className="pb-24 pt-6">
+          <section aria-labelledby="products-heading" className="pb-24">
             <h2 id="products-heading" className="sr-only">
               Products
             </h2>
@@ -276,8 +286,8 @@ export default function Example() {
               
 
               {/* Product grid */}
-              <div className="lg:col-span-5">
-                <div className="grid grid-cols-2 lg:grid-cols-3 gap-x-2 gap-y-16">
+              <div className="lg:col-span-5 lg:px-12">
+                <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-1 gap-y-16">
                 {products.map(product => <ProductCard product={product}/>)}
                 </div>
               </div>

@@ -212,8 +212,8 @@ export default function Example() {
         <main className="mx-auto">
           <div className="pt-24 px-4 sm:px-6 lg:px-12 pb-14">
             <h1 className="text-3xl lg:text-4xl text-gray-900 font-bold">T-Shirts</h1>
-            <p className="text-gray-800 mt-3 text-xs lg:text-[15px] leading-normal">
-            The easiest thing to wear and the most essential layer is a damn good tee shirt. Long or <br /> short sleeve tees, henleys, crew or v-necks - the best men's tees for any style.
+            <p className="text-gray-800 mt-3 text-sm lg:text-[15px] leading-normal">
+            The easiest thing to wear and the most essential layer is a damn good tee shirt. Long or short sleeve tees, henleys, crew or v-necks - the best men's tees for any style.
             </p>
           </div>
           <div className="flex items-center justify-between px-4 pb-6 sm:px-6 lg:px-12">
@@ -287,7 +287,7 @@ export default function Example() {
 
               {/* Product grid */}
               <div className="lg:col-span-5 lg:px-12">
-                <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-1 gap-y-16">
+                <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-[2px] gap-y-8">
                 {products.map(product => <ProductCard product={product}/>)}
                 </div>
               </div>

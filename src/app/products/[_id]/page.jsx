@@ -1,38 +1,22 @@
+import { HeartIcon } from '@heroicons/react/24/outline'
 import React from 'react'
 
 
-async function getData(_id) {
-  const res = await fetch(`https://sore-cyan-twill.cyclic.app/api/products/${_id}`)
-  if (!res.ok) {
-    throw new Error('Failed to fetch data')
-  }
-  return res.json()
-}
 
-
-
-export default async function Page({ params }) {
-  const data = await getData(params._id)
-
+export default async function Page() {
   return (
     <div>
-      <div className="flex">
-
-        <div className="w-4/6">
-          <div className="grid grid-cols-2 gap-2">
-            <img className='h-full w-full' src={data.image} alt={data.image} />
-            <img className='h-full w-full' src={data.images[0]} alt={data.image} />
-            <img className='h-full w-full' src={data.images[1]} alt={data.image} />
-            <img className='h-full w-full' src={data.images[2]} alt={data.image} />
-            <img className='h-full w-full' src={data.images[3]} alt={data.image} />
+      <div className="flex justify-end lg:px-16 mt-40">
+        <div></div>
+        <div></div>
+        <div className='w-2/6'>
+          <div className="flex justify-between">
+            <h1 className="text-gray-900 font-bold text-3xl">Pursuit Haydon Tee</h1>
+            <HeartIcon strokeWidth={2} className='h-6 w-6 text-gray-800'/>
           </div>
+          <h3 className="text-gray-700 text-lg mt-2">Tech Jersey T-Shirt</h3>
+          <h3 className="text-gray-900 font-semibold text-lg mt-3">Rs 28,500</h3>
         </div>
-
-        <div className="w-2/6 px-10 mt-40">
-          <h1 className="text-neutral-900 text-2xl">Valorant Agent Sweatshirt</h1>
-          
-        </div>
-
       </div>
     </div>
   )

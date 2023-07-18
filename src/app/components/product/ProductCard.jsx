@@ -30,7 +30,7 @@ function ProductCard({product}) {
   return (
     <div>
         <div onMouseEnter={() => sethover(true)} onMouseLeave={() => sethover(false)} className='relative bg-[#e0e0e0]'>
-            <img className='rounded-sm' src="/13.png" alt="" />
+            <img className='rounded-sm' src={product.image} alt="" />
             <Link href={"/products/ss"}>
               <AnimatePresence>
                 {hover && <motion.img initial={{opacity:0}} animate={{opacity:1}} exit={{opacity:0}} src={product.image2} className='absolute top-0 left-0' alt="" />}

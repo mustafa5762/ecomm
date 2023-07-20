@@ -1,10 +1,11 @@
 "use client"
 
 import { Fragment, useState } from 'react'
-import { Dialog, Disclosure, Menu, Transition } from '@headlessui/react'
+import { Dialog, Disclosure, Menu, RadioGroup, Transition } from '@headlessui/react'
 import { XMarkIcon } from '@heroicons/react/24/outline'
-import { ChevronDownIcon, FunnelIcon, MinusIcon, PlusIcon, Squares2X2Icon } from '@heroicons/react/20/solid'
+import { ChevronDownIcon, ChevronUpIcon } from '@heroicons/react/20/solid'
 import ProductCard from '@/app/components/product/ProductCard'
+import Disclosuree from '@/app/components/Disclosure'
 
 const sortOptions = [
   { name: 'Most Popular', href: '#', current: true },
@@ -89,12 +90,19 @@ const products = [
   },
 ]
 
+const colors = [
+  { name: 'White', class: 'bg-white', selectedClass: 'ring-gray-400' },
+  { name: 'Gray', class: 'bg-gray-200', selectedClass: 'ring-gray-400' },
+  { name: 'Black', class: 'bg-gray-900', selectedClass: 'ring-gray-900' },
+]
+
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
 export default function Example() {
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false)
+  const [selectedColor, setSelectedColor] = useState(colors[0])
 
   return (
     <div className="bg-white">
@@ -133,7 +141,7 @@ export default function Example() {
                       onClick={() => setMobileFiltersOpen(false)}
                     >
                       <span className="sr-only">Close menu</span>
-                      <XMarkIcon className="h-6 w-6" aria-hidden="true" />
+                      <XMarkIcon className="h-6 w-6 text-gray-800" aria-hidden="true" />
                     </button>
                   </div>
 
@@ -159,7 +167,7 @@ export default function Example() {
                       ))}
                     </ul>
 
-                    {filters.map((section) => (
+                     {/* filters.map((section) => (
                       <Disclosure as="div" key={section.id} className="border-t border-gray-200 px-8 py-6">
                         {({ open }) => (
                           <>
@@ -168,9 +176,9 @@ export default function Example() {
                                 <span className="font-semibold text-gray-900">{section.name}</span>
                                 <span className="ml-6 flex items-center">
                                   {open ? (
-                                    <MinusIcon className="h-5 w-5" aria-hidden="true" />
+                                    <ChevronUpIcon className="h-5 w-5" aria-hidden="true" />
                                   ) : (
-                                    <PlusIcon className="h-5 w-5" aria-hidden="true" />
+                                    <ChevronDownIcon className="h-5 w-5" aria-hidden="true" />
                                   )}
                                 </span>
                               </Disclosure.Button>
@@ -200,7 +208,83 @@ export default function Example() {
                           </>
                         )}
                       </Disclosure>
+                                )) */}
+                    <Disclosuree title="Color">
+                    <RadioGroup value={selectedColor} onChange={setSelectedColor} className="mt-4">
+                  <RadioGroup.Label className="sr-only">Choose a color</RadioGroup.Label>
+                  <div className="flex items-center space-x-3">
+                    {colors.map((color) => (
+                      <RadioGroup.Option
+                        key={color.name}
+                        value={color}
+                        className={({ active, checked }) =>
+                          classNames(
+                            color.selectedClass,
+                            active && checked ? 'ring ring-offset-1' : '',
+                            !active && checked ? 'ring-2' : '',
+                            'relative -m-0.5 flex cursor-pointer items-center justify-center rounded-full p-0.5 focus:outline-none'
+                          )
+                        }
+                      >
+                        <RadioGroup.Label as="span" className="sr-only">
+                          {color.name}
+                        </RadioGroup.Label>
+                        <span
+                          aria-hidden="true"
+                          className={classNames(
+                            color.class,
+                            'h-8 w-8 rounded-full border border-black border-opacity-10'
+                          )}
+                        />
+                      </RadioGroup.Option>
                     ))}
+                  </div>
+                </RadioGroup>
+                    </Disclosuree>
+                    <Disclosuree title="Size">
+                    <div className="space-y-6">
+                                {filters[2].options.map((option, optionIdx) => (
+                                  <div key={option.value} className="flex items-center">
+                                    <input
+                                      id={`filter-mobile-${filters[2].id}-${optionIdx}`}
+                                      name={`${filters[2].id}[]`}
+                                      defaultValue={option.value}
+                                      type="checkbox"
+                                      defaultChecked={option.checked}
+                                      className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                                    />
+                                    <label
+                                      htmlFor={`filter-mobile-${filters[2].id}-${optionIdx}`}
+                                      className="ml-3 min-w-0 flex-1 text-gray-500"
+                                    >
+                                      {option.label}
+                                    </label>
+                                  </div>
+                                ))}
+                              </div>
+                    </Disclosuree>
+                    <Disclosuree title="Category">
+                    <div className="space-y-6">
+                                {filters[1].options.map((option, optionIdx) => (
+                                  <div key={option.value} className="flex items-center">
+                                    <input
+                                      id={`filter-mobile-${filters[1].id}-${optionIdx}`}
+                                      name={`${filters[1].id}[]`}
+                                      defaultValue={option.value}
+                                      type="checkbox"
+                                      defaultChecked={option.checked}
+                                      className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                                    />
+                                    <label
+                                      htmlFor={`filter-mobile-${filters[1].id}-${optionIdx}`}
+                                      className="ml-3 min-w-0 flex-1 text-gray-500"
+                                    >
+                                      {option.label}
+                                    </label>
+                                  </div>
+                                ))}
+                              </div>
+                    </Disclosuree>
                   </form>
                   </Transition.Child>
                 </Dialog.Panel>
@@ -267,11 +351,15 @@ export default function Example() {
 
               <button
                 type="button"
-                className="-m-2 ml-4 p-2 sm:ml-6 flex items-center"
+                className="-m-2 ml-4 p-2 sm:ml-6 flex items-center space-x-3"
                 onClick={() => setMobileFiltersOpen(true)}
               >
+                <span className="text-gray-800">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" width="16" height="14" viewBox="0 0 16 14">
+                    <path fill="currentColor" d="M3.2 5.5728v-1.712H0v-1.6h3.2V.4528h1.6v5.12H3.2Zm3.2-1.712H16v-1.6H6.4v1.6Zm4.8 9.6864v-5.12h1.6v1.808H16v1.6h-3.2v1.712h-1.6Zm-1.6-1.712v-1.6H0v1.6h9.6Z"></path>
+                  </svg>
+                </span>
                 <span className="font-bold mr-2 text-sm text-gray-900">Show Filters</span>
-                
               </button>
             </div>
           </div>
@@ -287,7 +375,7 @@ export default function Example() {
 
               {/* Product grid */}
               <div className="lg:col-span-5 lg:px-12">
-                <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-[2px] gap-y-8">
+                <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-[2px] gap-y-8">
                 {products.map(product => <ProductCard product={product}/>)}
                 </div>
               </div>

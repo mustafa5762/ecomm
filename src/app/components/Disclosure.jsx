@@ -25,11 +25,11 @@ export default function MyDisclosure({title,children}) {
           <Transition
             show={open}
             enter="transition duration-300 ease-out"
-            enterFrom="transform scale-90 opacity-0"
-            enterTo="transform scale-100 opacity-100"
+            enterFrom="opacity-0"
+            enterTo="opacity-100"
             leave="transition duration-75 ease-out"
-            leaveFrom="transform scale-100 opacity-100"
-            leaveTo="transform scale-95 opacity-0"
+            leaveFrom="opacity-100"
+            leaveTo="opacity-0"
           >
             {/*
               Don't forget to add `static` to your `Disclosure.Panel`!

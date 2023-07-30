@@ -43,3 +43,10 @@ body::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
 
+
+.bg-green-700 {
+  background-color: #1B3632;
+}
+.bg-blue-700 {
+  background-color: #1C2038;
+}

@@ -43,11 +43,11 @@ function ProductDetail({data}) {
                   </div>
 
 
-                <div className='p-8 flex items-center space-x-4'>
+                <div className='p-12 flex items-center space-x-8'>
                     {
                         data.colors.map(color => 
                             <div onClick={() => setSelectedColor(color)}>
-                                <div className={`border p-3 bg-gradient-to-b from-gray-200 to-transparent ${color === selectedColor ? 'border-gray-400' : ''}`}>
+                                <div className={`border p-3 bg-gradient-to-b from-gray-100 to-transparent ${color === selectedColor ? 'border-gray-400' : ''}`}>
                                     <div>
                                         <img src={color.colorImage} alt="" />
                                     </div>
@@ -66,7 +66,7 @@ function ProductDetail({data}) {
         </Transition.Root>
     
 
-    <div className="grid grid-cols-3 mt-20">
+    <div className="grid grid-cols-1 lg:grid-cols-3 mt-20">
         <div className="col-span-2">
           <div className="flex space-x-1">
             <div>
@@ -77,12 +77,12 @@ function ProductDetail({data}) {
             </div>
           </div>
         </div>
-        <div className="px-12">
-          <h1 className="text-gray-900 font-bold text-3xl capitalize">{data.name}</h1>
+        <div className="py-4 px-3 lg:px-12">
+          <h1 className="text-gray-900 font-bold text-2xl lg:text-3xl capitalize">{data.name}</h1>
           <div className="mt-2"></div>
           <Rating/>
           <div className="flex items-center justify-between mt-4">
-            <h3 className="font-semibold text-xl text-gray-900">Rs {data.price}</h3>
+            <h3 className="font-semibold text-lg lg:text-xl text-gray-900">Rs {data.price}</h3>
             <h5 className="text-orange-600 text-xs lg:text-sm font-semibold">Final Sale -60%</h5>
           </div>
           <div className="flex items-center justify-between mt-4 space-x-2">

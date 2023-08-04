@@ -7,6 +7,7 @@ function Page() {
     <div>
       <Filters/>
       <ProductGrid/>
+      <div className="h-screen"></div>
     </div>
   )
 }

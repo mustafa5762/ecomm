@@ -26,10 +26,10 @@ function ProductCard({product}) {
 
   return (
     <div>
-        <div onMouseEnter={() => sethover(true)} onMouseLeave={() => sethover(false)} className='relative bg-[#e0e0e0]'>
+        <div onMouseEnter={() => sethover(true)} onMouseLeave={() => sethover(false)} className='relative bg-gray-100'>
             <img className='rounded-sm transition duration-300' src={selectedColore.colorImage} alt="" />
             <Link href={`/products/${product._id}`}>
-                <img src="/second-image.png" className={`transition-opacity duration-500 absolute top-0 left-0 ${hover ? `opacity-100` : `opacity-0`}`} alt="" />
+                <img src={selectedColore.colorImage2} className={`bg-gray-100 transition-opacity duration-500 absolute top-0 left-0 ${hover ? `opacity-100` : `opacity-0`}`} alt="" />
             </Link>
             {hover && <div className="absolute top-0 right-0 mr-4">
             {product.colors.map(color => 
@@ -47,7 +47,7 @@ function ProductCard({product}) {
             }
         </div>
         <div className="mt-4 ml-2">
-            <h5 className="text-orange-600 text-[11px] lg:text-[13px] font-semibold">Final Sale -60%</h5>
+            <h5 className="text-orange-600 text-[11px] lg:text-[12px] font-semibold">Final Sale -60%</h5>
             <h4 className="text-xs lg:text-sm text-gray-900 font-semibold mt-1">{product.name}</h4>
             <h5 className="text-gray-800 text-[11px] lg:text-[13px] mt-1.5 font-medium">Rs {product.price}</h5>
         </div>

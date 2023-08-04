@@ -58,36 +58,6 @@ const filters = [
   },
 ]
 
-const products = [
-  {
-    name: 'Pursuit Haydon Tee',
-    price: 28800,
-    short: 'Tech Jersey T-Shirt',
-    image2: 'https://cdn.media.amplience.net/i/rb/MBC23ST051ZY51-338-A/Pursuit-Haydon-Tee-338?$xlarge$&fmt=auto',
-    image: '/image1.png'
-  },
-  {
-    name: 'Classic Cloud Tee',
-    price: 37900,
-    short: 'Cloud Jersey T-Shirt',
-    image2: 'https://cdn.media.amplience.net/i/rb/MBC23PT017BB17-260-A/Classic-Cloud-Tee-260?$xlarge$&fmt=auto',
-    image: '/image2.png'
-  },
-  {
-    name: 'Kerwin Linen Short Sleeve Crew',
-    price: 59100,
-    short: 'Relaxed Fit Shirt',
-    image2: 'https://cdn.media.amplience.net/i/rb/MBS23P007BLT07-319-A/Kerwin-Linen-Short-Sleeve-Crew-319?$xlarge$&fmt=auto',
-    image: '/image3.png'
-  },
-  {
-    name: 'Miles Principal Jersey Tee',
-    price: 37900,
-    short: 'Cotton T-Shirt',
-    image2: 'https://cdn.media.amplience.net/i/rb/MBC21PT0236N23-021-A/Miles-Principal-Jersey-Tee-021?$xlarge$&fmt=auto',
-    image: '/image4.png'
-  },
-]
 
 const colors = [
   { name: 'White', class: 'bg-white', selectedClass: 'ring-gray-400' },

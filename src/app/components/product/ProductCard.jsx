@@ -26,10 +26,10 @@ function ProductCard({product}) {
 
   return (
     <div>
-        <div onMouseEnter={() => sethover(true)} onMouseLeave={() => sethover(false)} className='relative bg-gray-100'>
+        <div onMouseEnter={() => sethover(true)} onMouseLeave={() => sethover(false)} className='relative bg-gray-200'>
             <img className='rounded-sm transition duration-300' src={selectedColore.colorImage} alt="" />
             <Link href={`/products/${product._id}`}>
-                <img src={selectedColore.colorImage2} className={`bg-gray-100 transition-opacity duration-500 absolute top-0 left-0 ${hover ? `opacity-100` : `opacity-0`}`} alt="" />
+                <img src={selectedColore.colorImage2} className={`bg-gray-200 transition-opacity duration-500 absolute top-0 left-0 ${hover ? `opacity-100` : `opacity-0`}`} alt="" />
             </Link>
             {hover && <div className="absolute top-0 right-0 mr-4">
             {product.colors.map(color => 

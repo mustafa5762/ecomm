@@ -2,14 +2,36 @@
 
 import Rating from '@/app/components/product/Rating'
 import { Dialog, Transition } from '@headlessui/react'
-import { ChevronDownIcon } from '@heroicons/react/24/outline'
+import { CheckIcon, ChevronDownIcon } from '@heroicons/react/24/outline'
 import React, { Fragment, useState } from 'react'
+import { useCart } from "react-use-cart";
 
 function ProductDetail({data}) {
 
-    const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false)
-    const [selectedColor, setSelectedColor] = useState(data.colors[0])
+    const sizes = ['Small','Medium','Large','XL','2XL']
 
+    const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false)
+    const [sizeFiltersOpen, setSizeFiltersOpen] = useState(false)
+    const [selectedColor, setSelectedColor] = useState(data.colors[0])
+    const [selectedSize, setSelectedSize] = useState()
+    const { addItem, items } = useCart();
+
+    const addToCart = () => {
+      if (selectedSize) {
+        const p = {
+          id: data._id,
+          name: data.name,
+          price: data.price,
+          color: selectedColor,
+          size: selectedSize,
+        }
+        addItem(p)
+      }
+      else {
+        sizeFiltersOpen(true)
+      }
+    }
+    
   return (
     <>
 
@@ -64,6 +86,58 @@ function ProductDetail({data}) {
             </div>
           </Dialog>
         </Transition.Root>
+
+
+        <Transition.Root show={sizeFiltersOpen} as={Fragment}>
+          <Dialog as="div" className="relative z-40" onClose={setSizeFiltersOpen}>
+            <Transition.Child
+              as={Fragment}
+              enter="transition-opacity ease-linear duration-300"
+              enterFrom="opacity-0"
+              enterTo="opacity-100"
+              leave="transition-opacity ease-linear duration-300"
+              leaveFrom="opacity-100"
+              leaveTo="opacity-0"
+            >
+              <div className="fixed inset-0 bg-black bg-opacity-60" />
+            </Transition.Child>
+
+            <div className="fixed inset-0 z-40 flex m-3">
+              <Transition.Child
+                as={Fragment}
+                enter="transition ease-[cubic-bezier(.19,1,.22,1)] duration-700 transform"
+                enterFrom="translate-x-full"
+                enterTo="translate-x-0"
+                leave="transition ease-[cubic-bezier(.19,1,.22,1)] duration-700 transform"
+                leaveFrom="translate-x-0"
+                leaveTo="translate-x-full"
+              >
+                <Dialog.Panel className="relative ml-auto flex h-full w-full max-w-md flex-col overflow-y-auto bg-white py-4 pb-12 shadow-xl rounded-md">
+                  <div className="flex items-center justify-center px-8 border-b border-gray-200 pb-3">
+                    <h2 className="text-lg font-semibold text-gray-900">Choose Size</h2>
+                  </div>
+
+
+                <div className='p-8'>
+                    {
+                      sizes.map(size => 
+                        <div onClick={() => setSelectedSize(size)} className='py-5 px-2.5 border-b border-gray-200 flex items-center justify-between'>
+                          <div className='text-gray-900'>{size}</div>
+                          <div className='text-gray-900'>
+                            {size === selectedSize && <CheckIcon className='w-4 h-4'/>}
+                          </div>
+                        </div>
+                      )
+                    }
+                </div>
+                </Dialog.Panel>
+              </Transition.Child>
+            </div>
+          </Dialog>
+        </Transition.Root>
+
+
+        
     
 
     <div className="grid grid-cols-1 lg:grid-cols-3 mt-20">
@@ -86,20 +160,20 @@ function ProductDetail({data}) {
             <h5 className="text-orange-600 text-xs lg:text-sm font-semibold">Final Sale -60%</h5>
           </div>
           <div className="flex items-center justify-between mt-4 space-x-2">
-            <div onClick={() => setMobileFiltersOpen(true)} className="border border-gray-200 px-4 py-2.5 w-3/6 flex items-center justify-between rounded-sm">
+            <div onClick={() => setMobileFiltersOpen(true)} className="border border-gray-200 px-4 py-3 w-3/6 flex items-center justify-between rounded-sm">
               <span className='font-semibold text-sm text-gray-900 capitalize'>Color: {selectedColor.name}</span>
               <span className="text-gray-800">
                 <ChevronDownIcon className='w-4 h-4'/>
               </span>
             </div>
-            <div className="border border-gray-200 px-4 py-2.5 w-3/6 flex items-center justify-between rounded-sm">
-              <span className='font-semibold text-sm text-gray-900'>Select Size</span>
+            <div onClick={() => setSizeFiltersOpen(true)} className="border border-gray-200 px-4 py-3 w-3/6 flex items-center justify-between rounded-sm">
+              <span className='font-semibold text-sm text-gray-900'>{selectedSize ? 'Size: ' + selectedSize : 'Select Size'}</span>
               <span className="text-gray-800">
                 <ChevronDownIcon className='w-4 h-4'/>
               </span>
             </div>
           </div>
-            <button className="w-full mt-4 font-semibold text-sm bg-gray-900 flex-1 py-2.5 text-white rounded-sm hover:bg-gray-800 transition">Add to Bag</button>
+            <button onClick={addToCart} className="w-full mt-4 font-semibold text-sm bg-gray-900 flex-1 py-3 text-white rounded-sm hover:bg-gray-800 transition">Add to Bag</button>
         </div>
       </div>
       </>

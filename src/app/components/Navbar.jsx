@@ -1,7 +1,7 @@
 import { HeartIcon, MagnifyingGlassIcon, ShoppingBagIcon, UserIcon } from '@heroicons/react/24/outline'
 import React from 'react'
 
-function Navbar() {
+function Navbar({open,setOpen}) {
   return (
     <div>
         <div className="flex items-center justify-between px-12 h-16 mt-3">
@@ -25,7 +25,7 @@ function Navbar() {
                 <div className="text-gray-800">
                   <HeartIcon className='w-[21px] h-[21px]'/>
                 </div>
-                <div className="text-gray-800">
+                <div onClick={() => setOpen(true)} className="text-gray-800">
                   <ShoppingBagIcon className='w-[21px] h-[21px]'/>
                 </div>
               </div>

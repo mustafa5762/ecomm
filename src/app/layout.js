@@ -1,7 +1,11 @@
+"use client"
+
+import { useState } from 'react';
+import Cart from './components/Cart';
 import Navbar from './components/Navbar';
 import './globals.css'
 import "cal-sans";
-
+import { CartProvider } from "react-use-cart";
 
 export const metadata = {
   title: 'Create Next App',
@@ -9,11 +13,16 @@ export const metadata = {
 }
 
 export default function RootLayout({ children }) {
+
+  const [open, setOpen] = useState(false)
   return (
     <html lang="en">
       <body>
-        <Navbar/>
-        {children}
+        <CartProvider>
+          <Cart open={open} setOpen={setOpen}/>
+          <Navbar open={open} setOpen={setOpen}/>
+          {children}
+        </CartProvider>
       </body>
     </html>
   )
